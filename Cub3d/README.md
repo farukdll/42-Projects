@@ -7,7 +7,7 @@
 
 1. Clone the repo
    ```sh
-   git clone https://github.com/farukdll/cub3d.git
+   git clone https://github.com/farukdll/Common-core
    ```
 2. Compile all source code with Makefile in root folder
    ```sh
