@@ -1,0 +1,15 @@
+Bu, .../info/dir dosyası olup, (dir)Üst adı verilen, Info
+hiyerarşisinin en üst düğümünü içerir.
+Info'yu ilk çalıştırdığınızda bu düğüme bakarak başlıyor olursunuz.
+
+File: dir,	Node: Top	Bu, INFO ağacının tepesidir
+
+  Bu (Dizin düğümü), temel konuların bir menüsünü verir.
+  "q" tuşuyla çıkar, "?" ile tüm Info komutlarını listeler, "d" ile buraya döner,
+  "h" ile yeni başlayanlar için bir klavuz alabilir,
+  "mEmacs<Return>" ile Emacs klavuzunu ziyaret edebilirsiniz, vs.
+
+  Emacs'ta, bir menü öğesi ya da çapraz başvuru üzerinde sağ fare tuşunu
+  tıklayarak seçim yapabilirsiniz.
+
+* Menu:
