@@ -1,4 +1,4 @@
-# get_next_line Subject
+# Get_next_line Subject
 
 Assignment name : get_next_line
 Expected files : get_next_line.c, get_next_line.h
