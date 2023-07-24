@@ -4,7 +4,7 @@ This exam has 1 question, microshell:
 
 <br>
 
-## Excepted Files
+## Only 1 File
 
 - microshell.c
 
