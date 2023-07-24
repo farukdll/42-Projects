@@ -8,8 +8,6 @@ This exam has 1 question, microshell:
 
 - microshell.c
 
-- microshell.h
-
 ## Subject Text
 
 Allowed functions: 
