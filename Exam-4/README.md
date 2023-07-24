@@ -4,7 +4,7 @@ This exam has 1 question, microshell:
 
 <br>
 
-## Only 1 File
+## 1 File
 
 - microshell.c
 
