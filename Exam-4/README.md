@@ -1,4 +1,4 @@
-# Exam Question
+# Exam Details
 
 This exam has 1 question, microshell:
 
