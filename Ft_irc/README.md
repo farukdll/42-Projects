@@ -4,7 +4,7 @@
 <!-- TABLE OF CONTENTS -->
 <summary>Table of Contents</summary>
 <ol>
-  <li><a href="#Soket Programlama Nedir?">Soket Programlama Nedir?</a></li>
+  <li><a href="#soket Programlama Nedir?">Soket Programlama Nedir?</a></li>
   <li><a href="#usage">Usage</a></li>
   <li><a href="#contributing">Contributing</a></li>
   <li><a href="#license">License</a></li>
