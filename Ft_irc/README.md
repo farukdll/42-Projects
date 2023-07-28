@@ -1,5 +1,5 @@
 # Ft_irc
-![KVIrc_icon svg](https://github.com/farukdll/Common-core/assets/97880185/6bbf6bbc-e391-449c-88cd-4fa479cce4c7)
+![KVIrc-Midnight](https://github.com/farukdll/Common-core/assets/97880185/KVIrc-midnight.png)
 
 
 
