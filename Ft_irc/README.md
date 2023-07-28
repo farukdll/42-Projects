@@ -2,8 +2,11 @@
 ![KVIrc-Logo](https://github.com/farukdll/Common-core/assets/97880185/16e5a386-4fd0-4d1d-a506-0499278168c4)
 
 <!-- CONTRIBUTING -->
-## Contributing-Github
+## Contributors
 * [farukdll](https://github.com/farukdll)
+* [Kaano1](https://github.com/Kaano1)
+* [rasnesakam](https://github.com/rasnesakam)
+* [b-tekinli](https://github.com/b-tekinli)
 
 <!-- TABLE OF CONTENTS -->
 <summary>Table of Contents</summary>
