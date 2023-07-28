@@ -1,7 +1,23 @@
 # FT_IRC
 ![KVIrc-Logo](https://github.com/farukdll/Common-core/assets/97880185/16e5a386-4fd0-4d1d-a506-0499278168c4)
 
+<!-- TABLE OF CONTENTS -->
+<summary>Table of Contents</summary>
+<ol>
+  <li><a href="#Soket Programlama Nedir?">Soket Programlama Nedir?</a></li>
+  <li><a href="#usage">Usage</a></li>
+  <li><a href="#contributing">Contributing</a></li>
+  <li><a href="#license">License</a></li>
+  <li><a href="#contact">Contact</a></li>
+  <li><a href="#acknowledgments">Acknowledgments</a></li>
+</ol>
+<!-- ABOUT THE PROJECT -->
+## Soket Programlama Nedir?
 
+Ağ tabanlı uygulamaların geliştirilmesi yani ağlar arasında iletişim kurmak için kullanılır. Client-Server mantığına dayanır.
+**Client**, bir hizmete erişmek isteyen bir bilgisayar olarak düşünülebilir.
+**Server**, bir hizmeti sağlayan bilgisayar olarak düşünülebilir.
+</a>
 
 
 <!--
