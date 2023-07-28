@@ -20,14 +20,12 @@
   <li><a href="#.">...</a></li>
 </ol>
 
-<!-- ABOUT THE PROJECT -->
+<!--
+<!-- ABOUT THE PROJECT 
 ## usage
 
-Ağ tabanlı uygulamaların geliştirilmesi yani ağlar arasında iletişim kurmak için kullanılır. Client-Server mantığına dayanır.
-**Client**, bir hizmete erişmek isteyen bir bilgisayar olarak düşünülebilir.
-**Server**, bir hizmeti sağlayan bilgisayar olarak düşünülebilir.
 </a>
-
+-->
 
 <!--
 IRC, internet üzerindeki metin tabanlı iletişim protokolüdür ve gerçek zamanlı iletişim sağlar. IRC kullanıcıları, doğrudan mesaj alışverişi yapabilir ve grup kanallarına katılabilir. IRC istemcileri, IRC sunucusuna bağlanarak kanallara katılır. IRC sunucuları, bir ağ oluşturmak için birbirine bağlanır.
