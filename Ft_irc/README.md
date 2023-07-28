@@ -1,4 +1,9 @@
 # Ft_irc
+![KVIrc_icon svg](https://github.com/farukdll/Common-core/assets/97880185/6bbf6bbc-e391-449c-88cd-4fa479cce4c7)
+
+
+
+
 <!--
 IRC, internet üzerindeki metin tabanlı iletişim protokolüdür ve gerçek zamanlı iletişim sağlar. IRC kullanıcıları, doğrudan mesaj alışverişi yapabilir ve grup kanallarına katılabilir. IRC istemcileri, IRC sunucusuna bağlanarak kanallara katılır. IRC sunucuları, bir ağ oluşturmak için birbirine bağlanır.
 
