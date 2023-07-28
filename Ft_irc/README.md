@@ -9,7 +9,8 @@
 * [b-tekinli](https://github.com/b-tekinli)
 
 ## TABLE_OF_CONTENTS
-<summary>Table of Contents</summary> <ol>
+<!-- <summary>Table of Contents</summary> --> 
+<ol>
   <li><a href="#.">...</a></li>
   <li><a href="#.">...</a></li>
   <li><a href="#.">...</a></li>
