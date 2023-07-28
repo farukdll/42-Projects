@@ -12,12 +12,12 @@
 
 <!-- TABLE OF CONTENTS -->
 <summary>Table of Contents</summary> <ol>
-  <li><a href="#soket Programlama Nedir?">Soket Programlama Nedir?</a></li>
-  <li><a href="#usage">Usage</a></li>
-  <li><a href="#contributing">Contributing</a></li>
-  <li><a href="#license">License</a></li>
-  <li><a href="#contact">Contact</a></li>
-  <li><a href="#acknowledgments">Acknowledgments</a></li>
+  <li><a href="#.">...</a></li>
+  <li><a href="#.">...</a></li>
+  <li><a href="#.">...</a></li>
+  <li><a href="#.">...</a></li>
+  <li><a href="#.">...</a></li>
+  <li><a href="#.">...</a></li>
 </ol>
 
 <!-- ABOUT THE PROJECT -->
