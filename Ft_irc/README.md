@@ -8,9 +8,11 @@
 * [rasnesakam](https://github.com/rasnesakam)
 * [b-tekinli](https://github.com/b-tekinli)
 
-## Table of Contents
-1. [What is KVIrc ?](#What_is_KVIrc_?)
-    * [KVIRC Protocols ?](#KVIRC_Protocols_?)
+<!-- ## Table of Contents -->
+<h3>Table of Contents</h3>
+
+1. [What is KVIrc ?](#kvirc)
+    * [KVIRC Protocols ?](#protocols)
 2. .
     * [PASS](#pass)
     * [NICK](#nick)
@@ -18,7 +20,7 @@
     * [OPER](#oper)
     * [QUIT](#quit)
 3. .
-
+<!--
 <ol>
   <li><a href="#what-is-kvirc-?">What is KVIrc ?</a></li>
   <li><a href="#-about">Abaut</a></li>
@@ -27,13 +29,14 @@
   <li><a href="#.">...</a></li>
   <li><a href="#.">...</a></li>
 </ol>
-<!--</details>
+</details>
 -->
 
-## What is KVIrc ? <a name="What_is_KVIrc_?"></a>
+## What is KVIrc ? <a name="kvirc"></a>
+
 * KVIrc is an IRC client that allows you to connect to IRC servers and engage in chat using the IRC protocol exclusively.
 
-## KVIRC Protocols ? <a name="KVIRC_Protocols_?"></a>
+## KVIRC Protocols ? <a name="protocols"></a>
 KVIrc is an IRC client that allows you to connect to IRC servers and engage in chat using the IRC protocol exclusively. KVIrc is an open-source and cross-platform client.
 
 1. `IRC Protocol Support` : KVIrc supports the IRC protocol and is used to connect to IRC servers. Since IRC is a text-based protocol, KVIrc facilitates communication between the server and the client through text-based messages.
@@ -46,9 +49,6 @@ KVIrc is an IRC client that allows you to connect to IRC servers and engage in c
 8. `Settings and Preferences` : KVIrc allows users to configure their personal preferences. Users can customize the interface appearance, colors, default channels, and other preferences.
 9. `Client Management` : KVIrc can manage and switch between multiple connections to work on multiple servers simultaneously.
 10. `Scripting Support` : KVIrc provides users with scripting support using languages like Python and Perl. Users can create their own plugins and commands within KVIrc using these scripting languages.
-
-## Abaut
-
 
 <!-- <summary>Table of Contents</summary> --> 
 <!--
