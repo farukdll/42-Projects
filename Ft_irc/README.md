@@ -1,4 +1,4 @@
-# FT_IRC
+# KVIrc
 ![KVIrc-Logo](https://github.com/farukdll/Common-core/assets/97880185/16e5a386-4fd0-4d1d-a506-0499278168c4)
 
 <!-- CONTRIBUTING -->
