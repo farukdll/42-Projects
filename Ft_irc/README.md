@@ -8,6 +8,8 @@
 * [rasnesakam](https://github.com/rasnesakam)
 * [b-tekinli](https://github.com/b-tekinli)
 
+## English Version of the README Below
+* [Turkish version](https://glitter-muskox-81c.notion.site/KVIrc-IRC-Projesi-Client-a1c59174db354bb4900ac76a8d7435d2)
 ## Table of Contents
 <!-- <h3>Table of Contents</h3> -->
 
@@ -37,7 +39,9 @@
    * [NOTICE Command](#nc)
    * [Usage of the NOTICE Command](#uotnc)
    * [Example Usage of NOTICE](#euon)
-7. [](#)
+7. [KVIrc PREFIX ?](#kp)
+   * [What is PREFIX on an IRC Server ?](#wipoais)
+   * [KVIrc PREFIX Other Details You Should Know ?](#kpodysk)
 
 <!-- <summary>Table of Contents</summary> -->
 <!--
@@ -142,6 +146,16 @@
 
 -------------------------------------------------------------------------------------
 
+### KVIrc PREFIX ? <a name="kp"></a>
+![kp](https://github.com/farukdll/Common-core/assets/97880185/6110e949-cb50-4a31-842b-7e137db8950e)
+
+### What is PREFIX on an IRC Server ? <a name="wipoais"></a>
+![wipoais](https://github.com/farukdll/Common-core/assets/97880185/013584e9-9769-4810-b1fa-727d97255bf9)
+
+### KVIrc PREFIX Other Details You Should Know ? <a name="kpodysk"></a>
+![kpodysk](https://github.com/farukdll/Common-core/assets/97880185/a3fb4e46-f1d4-42b5-8046-6f4da44f3bae)
+
+-------------------------------------------------------------------------------------
 
 
 
