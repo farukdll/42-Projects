@@ -13,7 +13,7 @@
 ## Table of Contents
 <!-- <h3>Table of Contents</h3> -->
 
-1. [What is KVIrc ?](#kvirc)
+1. [What is KVIrc ?](#kvircc)
    * [KVIrc Protocols ?](#protocols)
 2. [What is IRC ?](#irc)
    * [IRC Protocols ?](#protocols2)
@@ -42,6 +42,14 @@
 7. [KVIrc PREFIX ?](#kp)
    * [What is PREFIX on an IRC Server ?](#wipoais)
    * [KVIrc PREFIX Other Details You Should Know ?](#kpodysk)
+8. [What is Socket Programming ?](#wisp)
+9. [What Are Internet Protocols ?](#waip)
+10. [What is the Difference Between TCP and UDP ?](#witdbtau)
+11. [Sockets and Their Types](#satt)
+12. [](#)
+13. [](#)
+14. [](#)
+
 
 <!-- <summary>Table of Contents</summary> -->
 <!--
@@ -57,7 +65,7 @@
 -->
 -------------------------------------------------------------------------------------
 
-### What is KVIrc ? <a name="kvirc"></a>
+### What is KVIrc ? <a name="kvircc"></a>
 ![what is kvırc](https://github.com/farukdll/Common-core/assets/97880185/9109648e-2032-4ff6-8c14-ec122bde68bd)
 
 ### KVIrc Protocols ? <a name="protocols"></a>
@@ -157,9 +165,19 @@
 
 -------------------------------------------------------------------------------------
 
+### What is Socket Programming ? <a name="wisp"></a>
+![wisp](https://github.com/farukdll/Common-core/assets/97880185/d05e8054-b138-4df1-a5ed-81b683c5de7a)
 
+### What Are Internet Protocols ? <a name="waip"></a>
+![waip](https://github.com/farukdll/Common-core/assets/97880185/f3055799-9981-4da2-97da-e33b6e07d9fd)
 
+### What is the Difference Between TCP and UDP ? <a name="witdbtau"></a>
+![witdbtau](https://github.com/farukdll/Common-core/assets/97880185/175b83c0-ba6d-4c64-abcf-69c43f534bf9)
 
+### Sockets and Their Types <a name="satt"></a>
+![satt](https://github.com/farukdll/Common-core/assets/97880185/8cc8b7f0-953f-47e0-8180-ec2d7146a005)
+
+-------------------------------------------------------------------------------------
 
 
 
