@@ -47,8 +47,8 @@
 10. [What is the Difference Between TCP and UDP ?](#witdbtau)
 11. [Sockets and Their Types :](#satt)
 12. [All Used Functions :](#auf)
-13. [](#)
-14. [](#)
+13. [What is Netcat ?](#win)
+14. [What is a Vector ?](#wiav)
 
 
 <!-- <summary>Table of Contents</summary> -->
@@ -241,9 +241,28 @@ int poll(struct pollfd *fds, nfds_t nfds, int timeout);
 ```
 ![12](https://github.com/farukdll/Common-core/assets/97880185/865835a5-d50d-4b5b-85f8-e1a69a60e77d)
 
+-------------------------------------------------------------------------------------
 
+### What is Netcat ? <a name="win"></a>
+![win](https://github.com/farukdll/Common-core/assets/97880185/8e0baa3e-e9bc-4345-b003-88cbb378f9b6)
 
+### What is a Vector ? <a name="wiav"></a>
+![wiav](https://github.com/farukdll/Common-core/assets/97880185/bca28967-9ff9-4776-bc55-1235f5917bcb)
+```cpp
+#include <iostream>
+#include <vector>
 
+int main() {
+    std::vector<int> myVector;
 
+    myVector.push_back(10);
+    myVector.push_back(20);
+    myVector.push_back(30);
 
+    for (int i = 0; i < myVector.size(); ++i) {
+        std::cout << myVector[i] << " ";
+    }
+    return 0;
+}
+```
 
