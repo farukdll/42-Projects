@@ -45,8 +45,8 @@
 8. [What is Socket Programming ?](#wisp)
 9. [What Are Internet Protocols ?](#waip)
 10. [What is the Difference Between TCP and UDP ?](#witdbtau)
-11. [Sockets and Their Types](#satt)
-12. [](#)
+11. [Sockets and Their Types :](#satt)
+12. [All Used Functions :](#auf)
 13. [](#)
 14. [](#)
 
@@ -178,6 +178,71 @@
 ![satt](https://github.com/farukdll/Common-core/assets/97880185/8cc8b7f0-953f-47e0-8180-ec2d7146a005)
 
 -------------------------------------------------------------------------------------
+
+### All Used Functions : <a name="auf"></a>
+```cpp
+socket(AF_INET, SOCK_STREAM, 0);
+```
+![1](https://github.com/farukdll/Common-core/assets/97880185/6c5a4eda-e329-4d02-8dfd-4a172834813b)
+```cpp
+int bind(int sockfd, const struct sockaddr *addr, socklen_t addrlen);
+```
+![2](https://github.com/farukdll/Common-core/assets/97880185/b5e20f7f-dc42-4422-9ce0-c0f74b6e9a37)
+```cpp
+listen(int sockfd, int backlog);
+```
+![3](https://github.com/farukdll/Common-core/assets/97880185/6a720bee-1692-4388-ad57-28340b237950)
+```cpp
+accept(int sockfd, struct sockaddr *addr, socklen_t *addrlen);
+```
+![4](https://github.com/farukdll/Common-core/assets/97880185/6a48584c-5370-491e-b893-60c5c638c19d)
+```cpp
+#include <netinet/in.h>
+
+struct sockaddr_in {
+	short			sin_family;        // AF_INET
+	unsigned short   sin_port;	 // htons(3490)
+	struct in_addr   sin_addr;	 // see struct in_addr, below
+	char			 sin_zero[8];      // zero this if you want to
+};
+
+struct in_addr {
+	unsigned long s_addr;        // load with inet_aton()
+};
+```
+![5](https://github.com/farukdll/Common-core/assets/97880185/92f1e8a1-919e-4b2e-8ec7-9d73e87611f1)
+![6](https://github.com/farukdll/Common-core/assets/97880185/350b7cca-389b-4528-9514-06ba9d4d0f52)
+![7](https://github.com/farukdll/Common-core/assets/97880185/a2280db7-c46a-4121-a446-9e427d866e35)
+```cpp
+int inet_pton(int af, const char *src, void *dst);
+```
+![8](https://github.com/farukdll/Common-core/assets/97880185/1b86911a-8f15-49fb-94dc-a436714143d2)
+```cpp
+#include <string>
+
+int main() {
+	std::string str = "Merhaba";
+
+	const char* cstr = str.c_str();
+
+	// C-style karakter dizisini kullanma
+	// ...
+	return 0;
+}
+```
+![9](https://github.com/farukdll/Common-core/assets/97880185/8de0421f-def0-49a4-a6b0-e874ac47a06c)
+```cpp
+ssize_t recv(int sockfd, void *buf, size_t len, int flags);
+```
+![10](https://github.com/farukdll/Common-core/assets/97880185/743fa579-770d-42c3-9806-54daef8d58e6)
+![11](https://github.com/farukdll/Common-core/assets/97880185/5ab95673-1351-4ff2-8465-69f2bcfca45c)
+```cpp
+int poll(struct pollfd *fds, nfds_t nfds, int timeout);
+```
+![12](https://github.com/farukdll/Common-core/assets/97880185/865835a5-d50d-4b5b-85f8-e1a69a60e77d)
+
+
+
 
 
 
