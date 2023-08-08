@@ -46,7 +46,7 @@
 9. [What Are Internet Protocols ?](#waip)
 10. [What is the Difference Between TCP and UDP ?](#witdbtau)
 11. [Sockets and Their Types :](#satt)
-12. [All Used Functions :](#auf)
+12. [Used Functions :](#uf)
 13. [What is Netcat ?](#win)
 14. [What is a Vector ?](#wiav)
 
@@ -179,7 +179,7 @@
 
 -------------------------------------------------------------------------------------
 
-### All Used Functions : <a name="auf"></a>
+### Used Functions : <a name="auf"></a>
 ```cpp
 socket(AF_INET, SOCK_STREAM, 0);
 ```
