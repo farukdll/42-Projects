@@ -179,7 +179,7 @@
 
 -------------------------------------------------------------------------------------
 
-### Used Functions : <a name="auf"></a>
+### Used Functions : <a name="uf"></a>
 ```cpp
 socket(AF_INET, SOCK_STREAM, 0);
 ```
