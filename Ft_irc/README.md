@@ -49,6 +49,7 @@
 12. [Used Functions :](#uf)
 13. [What is Netcat ?](#win)
 14. [What is a Vector ?](#wiav)
+15. [Commands :](#cmd)
 
 
 <!-- <summary>Table of Contents</summary> -->
@@ -266,3 +267,9 @@ int main() {
 }
 ```
 
+-------------------------------------------------------------------------------------
+
+### Commands : <a name="cmd"></a>
+![cmd](https://github.com/farukdll/Common-core/assets/97880185/5e8f4390-90b2-4aed-be85-62bfefda887c)
+
+-------------------------------------------------------------------------------------
