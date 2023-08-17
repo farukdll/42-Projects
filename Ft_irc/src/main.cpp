@@ -1,13 +1,13 @@
 #include <Server.hpp>
 
-Server start;
+Server	start;
 
 /*
 	Using a negative value for a port number causes errors and leads to unexpected results because 
 	it does not comply with network communication standards. Therefore, 
 	port numbers are always considered as positive integer values.
 */
-bool control(char **av)
+bool	control(char **av)
 {
 	int port = atoi(av[1]);
 
@@ -16,7 +16,9 @@ bool control(char **av)
 	return false;
 }
 
-int main(int ac, char **av) // 8080 emakas
+
+
+int	main(int ac, char **av) // 8080 emakas
 {
 	if (ac != 3 || !control(av))
 	{
@@ -28,13 +30,6 @@ int main(int ac, char **av) // 8080 emakas
 	start.setPassword(av[2]);
 	start.toBegin();
 
-
-	User u;
-	u.setNickName("nick");
-	std::string content = "Example reply content";
-
-	std::string numeric = generateReply(RPL_WELCOME, u, content);
-	std::string normal = generateReply(RPL_TOPIC, u, content);
 
 
 	return (0);
@@ -48,4 +43,3 @@ int main(int ac, char **av) // 8080 emakas
 //"a " State of being					  (OK)
 // join									  ()
 // Send a message to KVirc.				  ()
-

@@ -1,4 +1,4 @@
-#include "../inc/Socket.hpp"
+#include <../inc/Socket.hpp>
 
 int MAX_CLIENT = 50;
 
@@ -24,7 +24,7 @@ and the returned value will enable the use of the created socket or the applicat
 */
 bool Socket::Create(int port)
 {
-	int opt = 1;// ???
+	int opt = 1;//sorulacak???
 
 	fd_socket = socket(AF_INET, SOCK_STREAM, 0);
 	if (fd_socket == -1)

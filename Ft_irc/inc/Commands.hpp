@@ -3,46 +3,31 @@
 
 #include <Server.hpp>
 #include <DefineMod.hpp>
+#include <Message.hpp>
+#include <Global.hpp>
 
-typedef int (*fp_command)(const vector<string> &input, User& user);
+typedef int (*fp_command)(const vector<string> &input, Person& user);
 
 
 namespace cmd
 {
-	int join(const vector<string> &input, User& user);
-	int nick(const vector<string> &input, User& user);
-	int quit(const vector<string> &input, User& user);
-	int kill(const vector<string> &input, User& user);
-	int ping(const vector<string> &input, User& user);
-	int pong(const vector<string> &input, User& user);
-	int	who(const  vector<string> &input, User& user);
-	int	user(const vector<string> &input, User& user);
-	int	pass(const vector<string> &input, User& user);
-	int	part(const vector<string> &input, User& user);
-	int privmsg(const vector<string> &input, User& user);
-	int list(const vector<string> &input, User &user);
+	int join(const vector<string> &input, Person& user);
+	int kick(const vector<string> &input, Person& user);
+	int nick(const vector<string> &input, Person& user);
+	int list(const vector<string> &input, Person &user);
+	int	pass(const vector<string> &input, Person& from);
+	int	notice(const vector<string> &input, Person& from);
+	int ping(const vector<string> &input, Person& user);
+	int pong(const vector<string> &input, Person& user);
+	int privmsg(const vector<string> &input, Person& user);
+	int quit(const vector<string> &input, Person& user);
+	int user(const vector<string> &input, Person &user);
 }
 
-bool isEqual(const string &test, const string &aim, int enter);
-void write_fd(int fd, const string &msg);
-
-namespace users{
- 
-	/// @brief gets user from list or creates new one and inserts into the list
-	/// @param fd 
-	/// @return 
-	User* getOrCreateUser(int fd, vector <User*> &users);
-	
-	void deleteUser(int fd, vector <User*> users);
-
-	// Vector<User> getAllUsers();
-
-	void addUserTo(const string &group, User &user, map<string, vector<User *> > &channels);
-
-	void removeUserFrom(const string &group, User &user, map<string, vector<User *> > &channels);
-
-	// Map<string, string> getChannelList();
-	
-};
-
+bool	isEqual(const string &test, const string &aim, int enter);
+void	sendGroup(Person& user, const string n_channel, const string msg);
+string	just_text();
+bool	find_channel(string target, Person &from);
+bool	find_channel(vector <Person*> group, string name);
+string	to_str(int	number);
 #endif

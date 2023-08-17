@@ -14,7 +14,10 @@
 #include <cstring>
 #include <fcntl.h>
 #include <map>
+#include <list>
 #include <unistd.h>
+#include <cstdio>
+#include <stdio.h>
 
 #include <cstdlib>
 
@@ -28,5 +31,6 @@ using std::vector;
 using std::getline;
 using std::stringstream;
 using std::map;
+using std::ostringstream;
 
 #endif

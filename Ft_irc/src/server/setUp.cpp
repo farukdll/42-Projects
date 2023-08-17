@@ -1,38 +1,56 @@
-#include "../../inc/Server.hpp"
-#include "../../inc/Commands.hpp"
-
-bool	isEqual(const string &test, const string &aim, int enter)
-{
-	if (enter == 0)
-		return (false);
-	int size = aim.size();
-	int i;
-
-	for (i = 0; i < size && aim[i] == test[i]; ++i);
-
-	if (size == i)
-		return (true);
-	return (false);
-}
+#include <Server.hpp>
+#include <Commands.hpp>
 
 /**
  * selcommand used for select command for given input
  * @param input: Input string
  * @return fp_command is the type of the function that represents 
  */
-fp_command selCommand(vector<string> &input)
+fp_command	selCommand(vector<string> &input, const Person &user)
 {
-	string		str[] = {"JOIN", "NICK", "*", "KILL", "PING", "PONG", "WHO", "USER", "LIST", "PASS"};
-	fp_command	result[] = {cmd::join, cmd::nick, cmd::quit, cmd::kill, cmd::ping, cmd::pong, cmd::who, cmd::user, cmd::list, cmd::pass, NULL};
+	string		str[] = {"PASS", "USER", "NICK", "JOIN", "QUIT", "KICK", "PING", "PONG", "LIST", "PRIVMSG"};
+	fp_command	result[] = {cmd::pass, cmd::user, cmd::nick, cmd::join, cmd::quit, cmd::kick, cmd::ping, cmd::pong, cmd::list, cmd::privmsg,  NULL};
 	int			i;
 
 	for (i = -1; i < 10; ++i)
 		if (isEqual(input[0], str[i], input.size() >= 1) || 
 				isEqual(input[1], str[i], input.size() >= 2))
 			break;
+	if ((user.getActive() == FALSE && i != 0) || 
+		((user.getActive() == HALF || user.getActive() == U_HALF) && i > 2))
+	{
+		Response::create().to(user).content(ND_ACTIVE).send();
+		return (0);
+	}
 	return result[i];
 }
 
+vector<string>	split_input(const string &str){
+	std::size_t		last_index =  str.find_last_of(':');
+	stringstream	sstream(str.substr(0,last_index != string::npos ? last_index : str.length()));
+	string			new_str;
+	vector<string>	strings;
+	int				i = 0;
+
+	while (getline(sstream, new_str, ' '))
+	{
+		while (new_str.size() > 0 && new_str[new_str.size() - 1] < 33)
+			new_str = new_str.substr(0, new_str.size() - 1);
+		if (new_str[0] > 33)
+			strings.push_back(new_str);
+		i++;
+	}
+	if (last_index != string::npos){
+		strings.push_back(str.substr(last_index));
+	}
+	return strings;
+}
+
+void print_args(vector<string> &args){
+	for (int i = 0; i < args.size(); i++){
+		cout << "ARG: " << args[i] << endl;
+	}
+}
 
 /// @brief handles input
 /// @param fd 
@@ -41,26 +59,32 @@ void	Server::handleInput(int fd, const string &input)
 {
 	fp_command 		func;
 	string			str;
-	stringstream	sstream(input);
 	vector<string>	commands;
 
-	while (getline(sstream, str, ' '))
-	{
-		if (str[0] > 33)
-			commands.push_back(str);
-	}
-	// [<prefix>] <numeric_code> <param1> <param2>
-	// Write(fd,"001 amy :Ahmet naber\n",100);
-	// Create command from input
-	if (commands.size() >= 2 && (func = selCommand(commands)) != 0)
-		func(commands, *users[fd]);
-	else
-	{
-		// Write(fd," 001 amy :Welcome to the Internet Relay Network borja!borja@polaris.cs.uchicago.edu\n",100); //return come of the text to the client
-	}
+	commands = split_input(input);
+	
+	// start.setRawString(input);
+	if ((func = selCommand(commands, *users[fd])) != NULL)
+			func(commands, *users[fd]);
 }
 
-// Const string& generateReply(int code, User, string message);
+
+static int get_line(int fd, string &line){
+	char chr[2] = {0};
+	int readed = 0;
+	int total_read = 0;;
+	while ((readed = recv(fd,chr,1,0)) > 0){
+		total_read += readed;
+		string append(chr);
+		line += append;
+		if (chr[0] == '\n')
+			break;
+		memset(chr, 0, 2);
+	}
+	return total_read;
+}
+
+// const string& generateReply(int code, User, string message);
 
 void	Server::setUpSocket()
 {
@@ -69,8 +93,8 @@ void	Server::setUpSocket()
 
 	clientSocket.init(port);
 	pollfds.push_back( (struct pollfd){clientSocket.getSocketFd(), POLLIN, 0} );
-	while (poll(&pollfds[0], pollfds.size(), -1))
-	{   
+	while (poll(&pollfds[0], pollfds.size(), -1)) // It tells the state of the received inputs.
+	{
 		for (int i = 0; i < pollfds.size(); i++)
 		{
 			if(pollfds[i].revents & POLLIN)
@@ -85,19 +109,18 @@ void	Server::setUpSocket()
 
 					fcntl(clientFd, F_SETFL, O_NONBLOCK);
 					pollfds.push_back( (struct pollfd){clientFd, POLLIN | POLLOUT} );
-					users::getOrCreateUser(clientFd, this->users);
+					getOrCreateUser(clientFd);
 				}
 				else // Connected to client
 				{
-					char	input[512] = {0};
-					int	 readed = recv(pollfds[i].fd, input, sizeof(input) - 1,  0);
-
-					if (readed <= 1)
-					{
+					string line;
+					int readed = get_line(pollfds[i].fd,line);
+					if (readed > 0)
+						handleInput(pollfds[i].fd,line);
+					else if (readed <= 0){
+						deleteUser(pollfds[i].fd);
 						close(pollfds[i].fd);
-						users::deleteUser(pollfds[i].fd, this->users);
 					}
-					handleInput(pollfds[i].fd, string(input));
 				}
 			}
 		}

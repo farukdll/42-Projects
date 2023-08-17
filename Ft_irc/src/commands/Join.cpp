@@ -1,11 +1,21 @@
 #include <Commands.hpp>
 
-int cmd::join(const vector<string> &input, User& user)
+int cmd::join(const vector<string> &input, Person & from)
 {
-	cout << user.getActive() << endl;
-	if (user.getActive() != ACTIVE)
+	if (input.size() != 2)
+	{
+		Response::withCode(ERR_NEEDMOREPARAMS).to(from).content(JOIN_USE).send();
 		return (-1);
-	write(user.getFd(), "join", 4);
-	users::addUserTo(input[1], user, start.getGroup());
+	}
+	if (from.getActive() < HALF)
+	{
+		Response::create().to(from).content(ND_ACTIVE).send();
+		return (-1);
+	}
+
+	cout << "join input[0] : " << input[0] << endl;
+	cout << "join input[1] : " << input[1] << endl;
+
+	start.addUserTo(input[1], from);
 	return (0);
 }
