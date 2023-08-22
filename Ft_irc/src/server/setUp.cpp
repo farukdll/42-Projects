@@ -1,6 +1,17 @@
 #include <Server.hpp>
 #include <Commands.hpp>
 
+static std::string trimString(const std::string& str) {
+    std::string trimmed = str;
+    
+    std::string::size_type pos = trimmed.find_first_not_of(" \t\r\n");
+    if (pos != std::string::npos) {
+        trimmed.erase(0, pos);
+    }
+    
+    return trimmed;
+}
+
 /**
  * selcommand used for select command for given input
  * @param input: Input string
@@ -8,25 +19,23 @@
  */
 fp_command	selCommand(vector<string> &input, const Person &user)
 {
-	string		str[] = {"PASS", "USER", "NICK", "JOIN", "QUIT", "KICK", "PING", "PONG", "LIST", "PRIVMSG"};
-	fp_command	result[] = {cmd::pass, cmd::user, cmd::nick, cmd::join, cmd::quit, cmd::kick, cmd::ping, cmd::pong, cmd::list, cmd::privmsg,  NULL};
+	string		str[] = {"PASS", "USER", "NICK", "JOIN", "QUIT", "KICK", "PING", "PONG", "PRIVMSG", "NOTICE"};
+	fp_command	result[] = {cmd::pass, cmd::user, cmd::nick, cmd::join, cmd::quit, cmd::kick, cmd::ping, cmd::pong, cmd::privmsg, cmd::notice, NULL};
 	int			i;
 
 	for (i = -1; i < 10; ++i)
 		if (isEqual(input[0], str[i], input.size() >= 1) || 
 				isEqual(input[1], str[i], input.size() >= 2))
 			break;
-	if ((user.getActive() == FALSE && i != 0) || 
-		((user.getActive() == HALF || user.getActive() == U_HALF) && i > 2))
-	{
-		Response::create().to(user).content(ND_ACTIVE).send();
+	if ((user.getActive() == FALSE || user.getActive() == HALF || user.getActive() == U_HALF) && i > 2){
+		Response::createReply(ERR_NOTREGISTERED).to(user).content(ND_ACTIVE).send();
 		return (0);
 	}
 	return result[i];
 }
 
 vector<string>	split_input(const string &str){
-	std::size_t		last_index =  str.find_last_of(':');
+	std::size_t		last_index =  str.find(" :");
 	stringstream	sstream(str.substr(0,last_index != string::npos ? last_index : str.length()));
 	string			new_str;
 	vector<string>	strings;
@@ -46,12 +55,6 @@ vector<string>	split_input(const string &str){
 	return strings;
 }
 
-void print_args(vector<string> &args){
-	for (int i = 0; i < args.size(); i++){
-		cout << "ARG: " << args[i] << endl;
-	}
-}
-
 /// @brief handles input
 /// @param fd 
 /// @param input 
@@ -61,19 +64,19 @@ void	Server::handleInput(int fd, const string &input)
 	string			str;
 	vector<string>	commands;
 
-	commands = split_input(input);
-	
-	// start.setRawString(input);
-	if ((func = selCommand(commands, *users[fd])) != NULL)
-			func(commands, *users[fd]);
+	commands = split_input(trimString(input));
+	if ((func = selCommand(commands, *(users[fd]))) != NULL)
+	{
+		printClient(input, *(users[fd]));
+		func(commands, *(users[fd]));
+	}
 }
-
 
 static int get_line(int fd, string &line){
 	char chr[2] = {0};
 	int readed = 0;
 	int total_read = 0;;
-	while ((readed = recv(fd,chr,1,0)) > 0){
+	while ((readed = recv(fd,chr, 1, 0)) > 0){
 		total_read += readed;
 		string append(chr);
 		line += append;
@@ -84,8 +87,6 @@ static int get_line(int fd, string &line){
 	return total_read;
 }
 
-// const string& generateReply(int code, User, string message);
-
 void	Server::setUpSocket()
 {
 	Socket clientSocket;
@@ -93,27 +94,26 @@ void	Server::setUpSocket()
 
 	clientSocket.init(port);
 	pollfds.push_back( (struct pollfd){clientSocket.getSocketFd(), POLLIN, 0} );
-	while (poll(&pollfds[0], pollfds.size(), -1)) // It tells the state of the received inputs.
+	while (poll(&pollfds[0], pollfds.size(), -1))
 	{
-		for (int i = 0; i < pollfds.size(); i++)
+		for (int i = 0; i < int(pollfds.size()); i++)
 		{
 			if(pollfds[i].revents & POLLIN)
 			{
-				if (pollfds[i].fd == clientSocket.getSocketFd())// Connected to socket
-				{   /**
-					* It will check if a new connection is established, and if there is a new connection, 
-					 - it will enter the function and call accept.
-					* How does it detect a new connection? 
-					*/
+				if (pollfds[i].fd == clientSocket.getSocketFd())
+				{
 					int	 clientFd =  clientSocket.Accept();
 
 					fcntl(clientFd, F_SETFL, O_NONBLOCK);
-					pollfds.push_back( (struct pollfd){clientFd, POLLIN | POLLOUT} );
-					getOrCreateUser(clientFd);
+					pollfds.push_back( (struct pollfd){clientFd, POLLIN | POLLOUT, 0} );
+					Person *person = getOrCreateUser(clientFd);
+					if (person != NULL)
+						Response::createMessage().to(*person)
+							.from(*person).content("NICK").addContent(person->getNickName()).send();
 				}
-				else // Connected to client
+				else
 				{
-					string line;
+					string	line;
 					int readed = get_line(pollfds[i].fd,line);
 					if (readed > 0)
 						handleInput(pollfds[i].fd,line);

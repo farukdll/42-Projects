@@ -3,81 +3,64 @@
 
 Server::Server() {}
 
-void	Server::toBegin()
-{
-	for (int i = 0; i < 4; i++)
-		users.push_back(0);
-	setUpSocket();
-}
-
 Server::~Server() { cout << "it is not done but work destructor" << endl; }
 
-const string					Server::getPassword() const { return (this->password); }
+const string						Server::getPassword() const { return (this->password); }
 
 map< string, vector<Person *> >&	Server::getChannels() { return (this->channels); }
 
 vector<Person *>&					Server::getChannel(const string &channel) { return (this->channels[channel]); }
 
-vector<Person *>&					Server::getUsers() { return (this->users); }
+string&								Server::getRawString() { return (raw_string); }
 
-string&							Server::getRawString() { return (raw_string); }
+string&								Server::getHostname() { return (hostname); }
 
-void							Server::setRawString(string set) { raw_string = set; }
+vector<Person *>					Server::getUsers() 
+{ 
+	vector<Person *> persons;
 
-void							Server::setPort(int port) { this->port = port; }
-
-void							Server::setPassword(string pass) { this->password = pass; }
-
-void							Server::addUserTo(const string &group, Person &user) 
-{
-	if (!find_channel(channels[group], user.getNickName()))
-		Response::withCode(RPL_AWAY).to(user).content(group +  " " + user.getNickName() + "!" + user.getUserName() + "@127.0.0.1: Welcome to Channel " + group).send();
-	else
-	{
-		Response::create().to(user).content(ER_ALREADY_JOIN).send();
-		return ;
+	for (int i = 0; i < int(users.size()); i++){
+		if (this->users[i])
+			persons.push_back(this->users[i]);
+		else
+			persons.push_back(NULL);
 	}
-	
-	if (channels[group].size() == 0)
-	{
-		cout << "Channel Name: " << group << "." <<endl;
-		user.setOper(true);
-		user.addOperator(group);
-	}
-	else
-	{
-		vector<string>	send;
-
-		send.push_back("NOTICE");
-		send.push_back(group);
-		send.push_back("JOIN " + user.getNickName() + " in the " + group);
-		cmd::notice(send, user); //everyone take a message
-	}
-	cout << "channel before: " << channels[group].size() << "." << endl;
-	channels[group].push_back((Person *)&user);
-	cout << "channel after: " << channels[group].size() << "." << endl;
-	cout << "channel name: " << group << "." << endl;
+	return persons;
 }
 
-Person *			Server::getUserNick(string nick)
+Person*		Server::getUserNick(string nick)
 {
 	if (users.size() == 0)
 		return (NULL);
-	for (int i = 4; i < users.size(); i++)
+	for (int i = 0; i < int(users.size()); i++)
 	{
-		if (users[i]->getNickName() == nick)
+		if (users[i] && users[i]->getNickName() == nick)
 			return (users[i]);
 	}
 	return (NULL);
 }
 
-Person *   Server::getOrCreateUser(int fd)
+Person*   Server::getOrCreateUser(int fd)
 {
-	cout << fd << endl;
-	cout << users.size() << endl;
-	if (users.size() <= fd || users[fd] == 0)
-		users.insert(users.begin() + fd, new Person(fd));
+	if (int(users.size()) <= fd || users[fd] == 0)
+		users[fd] = new Person(fd);
 	return (users[fd]);
+}
+
+void	Server::setRawString(string set) { raw_string = set; }
+
+void	Server::setPort(int port) { this->port = port; }
+
+void	Server::setPassword(string pass) { this->password = pass; }
+
+void	Server::setHostname()
+{
+	char	hostname_c[1024];
+	int		return_number = gethostname(hostname_c, 1024);
+	checkSocket(return_number, "gethostname");
+	this->hostname = hostname_c;
+
+
 }
 
 void	Server::deleteUser(int fd)
@@ -86,7 +69,7 @@ void	Server::deleteUser(int fd)
 	{
 		vector<string>&	wh_op = this->users[fd]->getWhichChannel();
 
-		for (int i = 0; i < wh_op.size(); i++)
+		for (int i = 0; i < int(wh_op.size()); i++)
 		{
 			removeUserFrom(wh_op[i], *this->users[fd]);
 		}
@@ -100,10 +83,42 @@ void	Server::removeUserFrom(const string &channel, Person &user)
 	int fd = user.getFd();
 	int i = 0;
 
-	for (; i < channels[channel].size(); i++)
+	for (; i < int(channels[channel].size()); i++)
 		if (channels[channel][i]->getFd() == fd)
 			break;
 	channels[channel].erase(channels[channel].begin() + i);
 }
 
+void	Server::addUserTo(const string &group, Person &user) 
+{
+	if (!find_channel(channels[group], user.getNickName()))
+		Response::createMessage().from(user).to(user).content("JOIN").addContent(group).send();
+	else
+	{
+		Response::withCode(ERR_USERONCHANNEL).to(user).content(user.getNickName() + " " + group + ER_ALREADY_JOIN).send();
+		return ;
+	}
+	if (channels[group].size() == 0)
+		Response::createMessage().from(user).to(user).content("MODE").addContent(group + " +o " + user.getNickName()).send();
 
+	user.addOperator(group);
+	channels[group].push_back((Person *)&user);
+	string nickname = user.getNickName();
+	vector<Person *> users = channels[group];
+
+	for (int i = 0; i != int(users.size()); i++)
+	{		
+		Response::createMessage().from(user).to(*users[i]).content("JOIN").addContent(group).send();
+	}
+	Response::createReply(RPL_NAMEREPLY).to(user).addContent("= " + group + showInChannelNames(channels[group])).send();
+	Response::createReply(RPL_ENDOFNAMES).to(user).addContent(group + " :End of /NAMES list").send();
+}
+
+void	Server::toBegin()
+{
+	cout << "Port: " << port << endl;
+	cout << "Password: " << password << endl;
+	setHostname();
+	printServer("Server started ");
+	setUpSocket();
+}

@@ -1,6 +1,6 @@
 #include <Commands.hpp>
 
-int cmd::user(const vector<string> &input, Person & user) // There is a different result when there is a gap.
+int cmd::user(const vector<string> &input, Person & user)
 {
 	if (input.size() != 5)
 	{

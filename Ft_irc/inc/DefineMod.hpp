@@ -18,6 +18,7 @@
 #include <unistd.h>
 #include <cstdio>
 #include <stdio.h>
+#include <ctime>
 
 #include <cstdlib>
 
@@ -32,5 +33,6 @@ using std::getline;
 using std::stringstream;
 using std::map;
 using std::ostringstream;
+using std::cerr;
 
 #endif

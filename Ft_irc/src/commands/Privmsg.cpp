@@ -1,6 +1,14 @@
 #include <Commands.hpp>
 
-int cmd::privmsg(const vector<string> &input, Person & from) // Is there a channel and is there a user?
+static string join_input(const vector<string> &input) {
+	string str = "";
+	for (int i = 0; i < int(input.size()); i++){
+		str += input[i] + " ";
+	}
+	return str;
+}
+
+int cmd::privmsg(const vector<string> &input, Person & from)
 {
 	if (input.size() < 3)
 	{
@@ -14,16 +22,13 @@ int cmd::privmsg(const vector<string> &input, Person & from) // Is there a chann
 		return (-1);
 	}
 	string	who = input[1];
-	string	msg = just_text();
 
 	if (who[0] == '#')
-		sendGroup(from, who, msg); //ERR_NORECIPIENT = look at this
+		sendGroup(from, who, join_input(input));
 	else
 	{
 		Person *to = start.getUserNick(input[1]);
-
-		if (sendUser(&from, *to, input[0] + " " + input[1] + " " + input[2]) > 0)
-			Response::withCode(RPL_AWAY).to(from).content("Message sent to " + to->getNickName()).send();
+		Response::createMessage().from(from).to(*to).content(join_input(input)).send();
 	}
 	return (0);
 }

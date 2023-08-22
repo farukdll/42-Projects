@@ -19,10 +19,8 @@ class Person
 		string			serv_name;
 		string			real_name;
 		string			nick_name;
-		int				grade;
 		int				fd;
 		e_active		active;
-		bool			oper;
 		vector<string>	wh_op;
 	public:
 		Person();
@@ -37,16 +35,14 @@ class Person
 		const string&	getServName() const;
 		const string&	getRealName() const;
 		const string&	getNickName() const;
-		const int		getActive() const;
-		const bool		getOper() const;
-		const int		getFd() const;
+		int				getActive() const;
+		int				getFd() const;
 		void			setActive(e_active choose);
 		void			setUserName(const string& set);
 		void			setHostName(const string& set);
 		void			setServName(const string& set);
 		void			setRealName(const string& set);
 		void			setNickName(const string& set);
-		void			setOper(bool ch);
 		void			addOperator(const string &str);
 		void			delOperator(const string str);
 		string			message;
