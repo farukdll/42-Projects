@@ -6,7 +6,6 @@
 * [farukdll](https://github.com/farukdll)
 * [Kaano1](https://github.com/Kaano1)
 * [rasnesakam](https://github.com/rasnesakam)
-* [b-tekinli](https://github.com/b-tekinli)
 
 ## Turkish Version of the README
 * [Turkish Version](https://glitter-muskox-81c.notion.site/KVIrc-IRC-Projesi-Client-a1c59174db354bb4900ac76a8d7435d2)
