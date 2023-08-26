@@ -9,6 +9,14 @@
 
 ## Turkish Version of the README
 * [Turkish Version](https://glitter-muskox-81c.notion.site/KVIrc-IRC-Projesi-Client-a1c59174db354bb4900ac76a8d7435d2)
+
+
+## Reference 
+<!-- &#128279; &#x1F517; -->
+* [2812-Client Protocol](https://datatracker.ietf.org/doc/html/rfc2812)
+* [1459-IRC Protocol](https://datatracker.ietf.org/doc/html/rfc1459)
+
+
 ## Table of Contents
 <!-- <h3>Table of Contents</h3> -->
 
@@ -63,6 +71,21 @@
 </ol>
 </details>
 -->
+-------------------------------------------------------------------------------------
+
+## ⚙️ Start IRC Server
+To compile the program, use:
+  - `make`
+To start the Server, use:
+  - `./ircserv <port> <password>`
+    - **port**: The port number on which your IRC server will be listening to for incoming IRC connections.
+    - **password**: The connection password. It will be needed by any IRC client that tries to connect to your server.
+To connect to the server, you can use:
+  - `nc <IP ADDRESS> <PORT>`
+    - **IP ADDRESS**: Host IP address.
+    - **PORT**: The PORT that the server listening on.
+  - You can also use an IRC Client e.g LimeChat, WeeChat...
+
 -------------------------------------------------------------------------------------
 
 ### What is KVIrc ? <a name="kvircc"></a>
