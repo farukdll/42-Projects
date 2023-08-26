@@ -3,6 +3,8 @@
 static string join_input(const vector<string> &input) {
 	string str = "";
 	for (int i = 0; i < int(input.size()); i++){
+		if (i == 2 && input[i][0] != ':')
+			str += ":";
 		str += input[i] + " ";
 	}
 	return str;
@@ -28,7 +30,8 @@ int cmd::privmsg(const vector<string> &input, Person & from)
 	else
 	{
 		Person *to = start.getUserNick(input[1]);
-		Response::createMessage().from(from).to(*to).content(join_input(input)).send();
+		if (to != NULL)
+			Response::createMessage().from(from).to(*to).content(join_input(input)).send();
 	}
 	return (0);
 }

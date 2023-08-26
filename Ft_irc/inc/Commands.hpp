@@ -9,7 +9,6 @@
 
 typedef int (*fp_command)(const vector<string> &input, Person& user);
 
-
 namespace cmd
 {
 	int join(const vector<string> &input, Person& user);

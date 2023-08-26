@@ -1,4 +1,5 @@
 #include <Person.hpp>
+#include <Server.hpp>
 
 Person::Person(): fd(0), active(FALSE) {}
 
@@ -16,7 +17,15 @@ Person::Person(int fd): fd(fd), active(FALSE)
 
 Person::Person(const Person &user) { *this = user; }
 
-Person::~Person() { cout << "User disconnected" << endl; }
+Person::~Person() { 
+	if (this->getWhichChannel().size() > 0){
+		for (vector<string>::size_type i = 0; i < this->getWhichChannel().size(); i++){
+			sendGroup(*this, this->getWhichChannel()[i], "QUIT : Disconnected from server");
+			start.removeUserFrom(this->getWhichChannel()[i],*this);
+		}
+	}
+	close(fd);
+ }
 
 Person &			Person::operator=(const Person &user)
 {
@@ -31,35 +40,35 @@ Person &			Person::operator=(const Person &user)
 	return (*this);
 }
 
-vector<string>&	Person::getWhichChannel() { return (wh_op); }
+vector<string> &Person::getWhichChannel() { return (this->wh_op); }
 
-const string&	Person::getUserName() const { return (user_name); }
+const string&	Person::getUserName() const { return (this->user_name); }
 
-const string&	Person::getHostName() const { return (host_name); }
+const string &Person::getHostName() const { return (this->host_name); }
 
-const string&	Person::getServName() const { return (serv_name); }
+const string &Person::getServName() const { return (this->serv_name); }
 
-const string&	Person::getRealName() const { return (real_name);	}
+const string &Person::getRealName() const { return (this->real_name); }
 
-const string&	Person::getNickName() const { return (nick_name); }
+const string &Person::getNickName() const { return (this->nick_name); }
 
-int				Person::getActive() const { return (active); }
+int Person::getActive() const { return (this->active); }
 
-int				Person::getFd() const { return (fd); }
+int Person::getFd() const { return (this->fd); }
 
-void			Person::setActive(e_active choose)	 { active = choose; }
+void			Person::setActive(e_active choose)	 { this->active = choose; }
 
-void			Person::setUserName(const string& set) { user_name = set; }
+void			Person::setUserName(const string& set) { this->user_name = set; }
 
-void			Person::setHostName(const string& set) { host_name = set; }
+void			Person::setHostName(const string& set) { this->host_name = set; }
 
-void			Person::setServName(const string& set) { serv_name = set; }
+void			Person::setServName(const string& set) { this->serv_name = set; }
 
-void			Person::setRealName(const string& set) { real_name = set; }
+void			Person::setRealName(const string& set) { this->real_name = set; }
 
-void			Person::setNickName(const string& set) { nick_name = set; }
+void			Person::setNickName(const string& set) { this->nick_name = set; }
 
-void			Person::addOperator(const string &str) { wh_op.push_back(str); }
+void			Person::addOperator(const string &str) { this->wh_op.push_back(str); }
 
 void			Person::delOperator(const string str) 
 {
@@ -67,9 +76,9 @@ void			Person::delOperator(const string str)
 
 	for (; i < int(wh_op.size()); i++)
 	{
-		if (wh_op[i] == str)
+		if (this->wh_op[i] == str)
 		{
-			wh_op.erase(wh_op.begin() + i);
+			this->wh_op.erase(wh_op.begin() + i);
 		}
 	}
 }

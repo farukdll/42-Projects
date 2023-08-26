@@ -115,7 +115,6 @@ string Response::generateReply(){
 void Response::send(){
 	std::stringstream stream;
 	string message;
-
 	switch(this->responseType){
 		case MESSAGE:
 			message = generateMessage();
@@ -124,7 +123,7 @@ void Response::send(){
 			message = generateReply();
 			break;
 	}
-	::send(mFd, message.c_str(), message.length(),0);
+	::send(mFd, message.c_str(), message.length(), 0);
 }
 
 int sendUser(const Person *origin, const Person &target, const string &message){
@@ -134,6 +133,5 @@ int sendUser(const Person *origin, const Person &target, const string &message){
 	}
 	buffer += " ";
 	buffer += message;
-
 	return write(target.getFd(), buffer.c_str(), buffer.length());
 }

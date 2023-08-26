@@ -12,6 +12,11 @@ static std::string trimString(const std::string& str) {
     return trimmed;
 }
 
+static bool endsWith(const std::string &str1, const std::string &str2){
+	string end(str1.end() - str2.size(), str1.end());
+	return (str1.size() >= str2.size() && end == str2);
+}
+
 /**
  * selcommand used for select command for given input
  * @param input: Input string
@@ -24,8 +29,8 @@ fp_command	selCommand(vector<string> &input, const Person &user)
 	int			i;
 
 	for (i = -1; i < 10; ++i)
-		if (isEqual(input[0], str[i], input.size() >= 1) || 
-				isEqual(input[1], str[i], input.size() >= 2))
+		if (isEqual(str[i], input[0], str[i].size() >= 1) || 
+				isEqual(str[i], input[1], str[i].size() >= 2))
 			break;
 	if ((user.getActive() == FALSE || user.getActive() == HALF || user.getActive() == U_HALF) && i > 2){
 		Response::createReply(ERR_NOTREGISTERED).to(user).content(ND_ACTIVE).send();
@@ -49,8 +54,10 @@ vector<string>	split_input(const string &str){
 			strings.push_back(new_str);
 		i++;
 	}
-	if (last_index != string::npos){
-		strings.push_back(str.substr(last_index));
+	if (last_index != string::npos && last_index < str.size() - 1){
+		stringstream trail(str.substr(last_index + 2));
+		getline(trail,new_str);
+		strings.push_back(new_str);
 	}
 	return strings;
 }
@@ -63,12 +70,12 @@ void	Server::handleInput(int fd, const string &input)
 	fp_command 		func;
 	string			str;
 	vector<string>	commands;
-
+	Person			*person = getOrCreateUser(fd);
 	commands = split_input(trimString(input));
-	if ((func = selCommand(commands, *(users[fd]))) != NULL)
+	if ((func = selCommand(commands, *person)) != NULL)
 	{
-		printClient(input, *(users[fd]));
-		func(commands, *(users[fd]));
+		printClient(input, *person);
+		func(commands, *person);
 	}
 }
 
@@ -89,8 +96,9 @@ static int get_line(int fd, string &line){
 
 void	Server::setUpSocket()
 {
-	Socket clientSocket;
-	vector<struct pollfd> pollfds;
+	Socket					clientSocket;
+	vector<struct pollfd>	pollfds;
+	string	lines[MAX_CLIENT];
 
 	clientSocket.init(port);
 	pollfds.push_back( (struct pollfd){clientSocket.getSocketFd(), POLLIN, 0} );
@@ -106,21 +114,25 @@ void	Server::setUpSocket()
 
 					fcntl(clientFd, F_SETFL, O_NONBLOCK);
 					pollfds.push_back( (struct pollfd){clientFd, POLLIN | POLLOUT, 0} );
-					Person *person = getOrCreateUser(clientFd);
-					if (person != NULL)
-						Response::createMessage().to(*person)
-							.from(*person).content("NICK").addContent(person->getNickName()).send();
 				}
 				else
 				{
 					string	line;
-					int readed = get_line(pollfds[i].fd,line);
-					if (readed > 0)
-						handleInput(pollfds[i].fd,line);
-					else if (readed <= 0){
-						deleteUser(pollfds[i].fd);
-						close(pollfds[i].fd);
+					int readed = get_line(pollfds[i].fd, line);
+					if (readed > 0){
+						lines[pollfds[i].fd] += line;
+						if (endsWith(lines[pollfds[i].fd],"\n")){
+							handleInput(pollfds[i].fd, lines[pollfds[i].fd]);
+							lines[pollfds[i].fd] = "";
+						}
 					}
+					else if (readed <= 0 && users[pollfds[i].fd] != NULL){
+						vector<string> str;
+						pollfds.erase(pollfds.begin() + i);
+						deleteUser(pollfds[i].fd);
+					}
+					else
+						close(pollfds[i].fd);
 				}
 			}
 		}

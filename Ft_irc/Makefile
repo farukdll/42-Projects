@@ -16,7 +16,7 @@ HOBJS			=	$(INCS:inc/%.hpp)
 
 CC				=	c++
 RM				=	rm -rf
-CPPFLAGS		=	-std=c++98 -Wall -Wextra -Werror 
+CPPFLAGS		=	-std=c++98 -Wall -Wextra -Werror
 
 all:			$(NAME)
 
@@ -45,3 +45,4 @@ $(BIN)%.o: src/%.cpp
 
 
 .PHONY:			all clean fclean re bonus
+
