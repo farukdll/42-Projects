@@ -2,18 +2,19 @@
 NetPractice is a general practical exercise to let you discover networking.
 
 </br>
-<p align="center">
+<p>
   <img width="750" alt="ETHERNET CABLE" src="https://user-images.githubusercontent.com/97880185/211422027-874250ac-aac1-4100-a5ae-dab275c34c31.png">
 </p>
 <br />
 
-<p align="center">
+</br>
+<p>
   <img width="150" alt="Host" src="https://user-images.githubusercontent.com/97880185/211656437-609c2afe-8673-4b69-b960-9a8247a855c3.png">
   <img width="150" alt="Router" src="https://user-images.githubusercontent.com/97880185/211656451-11235c84-f555-427b-916e-93a428a816b9.png">
   <img width="150" alt="Switch" src="https://user-images.githubusercontent.com/97880185/211656464-3daa6f82-578b-4c6b-8d54-ff28b93e670f.png">
   <img width="130" alt="Internet" src="https://user-images.githubusercontent.com/97880185/211656370-91ad141f-d7c5-4877-8136-0f7f6237c646.png">
 </p>
-<br />
+<br/>
 
 
 ### What are TCP/IP addresses and how do they work?
@@ -49,7 +50,7 @@ NetPractice is a general practical exercise to let you discover networking.
 ```
 ### IP address
 </br>
-<p align="center">
+<p>
   <img width="388" alt="388-321" src="https://user-images.githubusercontent.com/97880185/211622199-e08ab318-5964-4db3-af73-0df9475868af.png">
 </p>
 
@@ -189,7 +190,7 @@ BINARY  | 0000000 - 1111111
 ```
 ### Masking-example
 </br>
-<p align="center">
+<p>
   <img width="389" alt="Mask" src="https://user-images.githubusercontent.com/97880185/211624489-1083a254-6f38-4aaa-866c-75d2d7092de6.png">
 </p>
 
@@ -203,7 +204,7 @@ BINARY  | 0000000 - 1111111
 
 ### Switch-example
 </br>
-<p align="center">
+<p>
   <img width="389" alt="key" src="https://user-images.githubusercontent.com/97880185/211623839-3220c7ec-70da-49c7-a7c8-4ff54d877b6d.png">
 </p>
 
@@ -220,7 +221,7 @@ BINARY  | 0000000 - 1111111
 ```
 ### Router-example
 </br>
-<p align="center">
+<p>
   <img width="400" alt="Router" src="https://user-images.githubusercontent.com/97880185/211625628-45dff831-f562-4934-b6ab-701dde3d5263.png">
 </p>
 
