@@ -110,18 +110,14 @@ BINARY  | 0000000 - 1111111
 `172.16.0.0  – 172.31.255.255 `<br>
 `192.168.0.0 – 192.168.255.255`<br>
 `127.0.0.0   – 127.255.255.255`
-### What is IP masking
+### What is Subnet Mask ?
+  * ###### The Subnet Mask is a sequence of numbers used to distinguish between the network portion and the device portion of IP addresses.
+  * ###### The subnet mask is used by network administrators and is used to group devices on a network, route IP addresses and create subnets.
+  * ###### Subnet Mask refers to a sequence of numbers, usually consisting of four parts (for example, 255.255.255.255.0), that divides IP addresses into subnets. Each part is an 8-bit binary number, creating a 32-bit sequence of numbers in total.
+  * ###### The Subnet Mask is important in IP addressing and network configuration and allows to route IP addresses more effectively and organize networks.
+  
+  
 ```
-- In TCP/IP, two devices can tell if they are on the same network by looking 
-  at the first few digits of each other's IP addresses. 
-  This step is called the IP mask or Subnet mask (IP mask or Subnet Mask). 
-  For example, if the IP mask is 255.255.255.0, two machines 
-  with the same first three digits (ie first 24 bits) are on the same network. 
-  In this case, 192.168.0.1 and 192.168.0.2 are on the same network, and 
-  192.168.1.1 is on another network.
-  
-  
-***
 - DECIMAL
         IP address | 104.198.241.125
         Mask       | 255.255.255.128
