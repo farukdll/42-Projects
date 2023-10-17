@@ -1,11 +1,13 @@
-# NetPractice
-NetPractice is a general practical exercise to let you discover networking.
+<h1 align="right"> <a name="up"></a>
 
-</br>
+# NetPractice
+###### - NetPractice is a general practical exercise to let you discover networking.
+
+<h1 align="center">
 <p>
   <img width="750" alt="ETHERNET CABLE" src="https://user-images.githubusercontent.com/97880185/211422027-874250ac-aac1-4100-a5ae-dab275c34c31.png">
 </p>
-<br />
+<br/>
 
 </br>
 <p>
@@ -303,3 +305,6 @@ BINARY  | 0000000 - 1111111
 </details>
 
 ---
+
+|[ ⬆︎  Up](#up)|
+|      :-:     |
