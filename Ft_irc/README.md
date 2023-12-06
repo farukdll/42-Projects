@@ -11,7 +11,7 @@
 * [rasnesakam](https://github.com/rasnesakam)
 
 ## Turkish Version of the README
-* [Turkish Version](https://glitter-muskox-81c.notion.site/KVIrc-IRC-Projesi-Client-a1c59174db354bb4900ac76a8d7435d2)
+* [Turkish Version](https://glitter-muskox-81c.notion.site/KVIrc-IRC-Projesi-Client-a1c59174db354bb4900ac76a8d7435d2?pvs=4)
 
 
 ## Reference 
