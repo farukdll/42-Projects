@@ -10,3 +10,4 @@
 
 #### 42 ?
 ###### Founded in Paris in 2013, Ecole 42 is today known as the best coding school worldwide with over 18,000 students in 31 countries. Ecole 42, which came to Turkey through the Turkish Open Source Platform 8 years after its foundation in Paris, aims to revolutionize the world of education and software.
+###### 42 is a future-proof computer science software school to train the next generation of software engineers. Offering a unique learning experience through a free, project-based approach, the French-based software school works on a peer-to-peer learning model without the presence of a teacher.
