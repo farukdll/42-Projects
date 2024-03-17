@@ -1,0 +1,8 @@
+.error-img {
+	max-width: 100%;
+	height: auto;
+}
+
+.error-disable-scroll::-webkit-scrollbar {
+	display: none;
+}

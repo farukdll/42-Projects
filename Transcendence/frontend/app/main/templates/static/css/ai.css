@@ -1,0 +1,79 @@
+.ai-body {
+    margin: 0;
+    background-color: var(--background-color);
+    font-family: "Kode Mono", monospace;
+    font-style: normal;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
+}
+
+.frame {
+    width: 70vw;
+    height: 70vh;
+    border: 2px dashed var(--foreground-color);
+    position: relative;
+}
+
+.ball {
+    position: absolute;
+    background-color: var(--foreground-color);
+    border-radius: 50%;
+    width: 2.5vh;
+    height: 2.5vh;
+}
+
+.score {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-weight: bold;
+    font-size: 8vh;
+    color: var(--foreground-color);
+    margin-bottom: 42px;
+}
+
+.score>p {
+    padding-top: 20px;
+    font-size: 6vh;
+}
+
+.score>div {
+    padding: 0 2vh;
+    margin: 1vh 0;
+    opacity: 0.5;
+    text-align: center;
+}
+
+.game-container {
+    position: relative;
+    width: 1250px;
+    height: 700px;
+    border: 2px dashed white;
+    border-radius: 50px;
+    overflow: hidden;
+}
+
+.paddle {
+    position: absolute;
+    width: 20px;
+    height: 100px;
+    background-color: white;
+}
+
+.w-gif, .s-gif {
+    max-width: 100px;
+    height: auto;
+    position: absolute;
+    top: 0;
+    left: 100px;
+    transform: translateY(-50%);
+    margin-top: 48vh;
+}
+
+.s-gif {
+    margin-top: calc(50vh + 250px);
+}

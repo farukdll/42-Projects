@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="tr">
+
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<meta name="keywords" content="transcendence, Transcendence, Ecole 42, 42 İstanbul, 42 Kocaeli, 42, Ecole, Ping Pong" >
+	<meta name="description" content="Ecole 42 İstanbul kampüsü öğrencileri tarafından geliştirilmiş olan fullstack bir projedir.">
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" />
+	<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css">
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+	<link rel="stylesheet" href="/static/css/index.css">
+	<title>Transcendence</title>
+	<script src="/static/js/websocket.js"></script>
+</head>
+
+<body>
+	<header>
+		<nav id="index-navbar" class="navbar bg-dark border-bottom navbar-expand-lg  border-body mb-5" data-bs-theme="dark">
+			<div class="container-fluid">
+				<a id="nav-home" class="navbar-brand" href="/" data-page-id="1"><img src="/static/assets/tr-logo.png"></a>
+				<button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarScroll"
+					aria-controls="navbarScroll" aria-expanded="false" aria-label="Toggle navigation">
+					<span class="navbar-toggler-icon"></span>
+				</button>
+				<div class="collapse navbar-collapse" id="navbarScroll">
+					<ul class="navbar-nav me-auto my-2 my-lg-0 navbar-nav-scroll" style="--bs-scroll-height: 100px;">
+						<li class="nav-item">
+							<a id="/" class="nav-link active" aria-current="page"  href="/" data-page-id="1">Home</a>
+						</li>
+						<li class="nav-item">
+							<a id="/livechat" class="nav-link" href="/livechat" data-page-id="2">Live Chat</a>
+						</li>
+						<li class="nav-item">
+							<a id="/about" class="nav-link" href="/about" data-page-id="3">About</a>
+						</li>
+						<li class="nav-item dropdown" style="width: 250px;">
+							<button class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown"
+								aria-expanded="false" onclick="getNotification()">
+								<svg data-slot="icon" fill="none" stroke-width="1.5" stroke="currentColor"
+									viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+									<path stroke-linecap="round" stroke-linejoin="round"
+										d="M14.857 17.082a23.848 23.848 0 0 0 5.454-1.31A8.967 8.967 0 0 1 18 9.75V9A6 6 0 0 0 6 9v.75a8.967 8.967 0 0 1-2.312 6.022c1.733.64 3.56 1.085 5.455 1.31m5.714 0a24.255 24.255 0 0 1-5.714 0m5.714 0a3 3 0 1 1-5.714 0">
+									</path>
+								</svg>
+							</button>
+							<ul id="notify-list" class="overflow-y-scroll dropdown-menu" style="height: 2x00px;">
+								<!--notification added-->
+							</ul>
+						</li>
+						
+					</ul>
+					<form class="d-flex" role="search" id="search" onsubmit="invokeSearchForm(e)">
+						<input id="input-search" class="form-control me-2" type="search" placeholder="Search"
+							aria-label="Search" />
+						<button id="click-search" class="btn btn-outline-light" type="submit">
+							Search
+						</button>
+					</form>
+
+					<a id="out-login" class="btn btn-outline-white ms-2" style="width: 90px; float: right;"
+						href="/login" onclick="outLogin()">
+						Out
+					</a>
+				</div>
+			</div>
+		</nav>
+	</header>
+	<!-- NAVBAR END -->
+
+	<div id="index-body">
+		{% include page_requested %}
+	</div>
+
+
+	<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.1/jquery.min.js" integrity="sha512-v2CJ7UaYy4JwqLDIrZUI/4hqeoQieOmAZNXBeQyjo21dadnwR+8ZaIJVT8EE2iyI61OV8e6M8PP2/4hpQINQ/g==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+	<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+	<script src="https://use.typekit.net/hoy3lrg.js"></script>
+	<script src="/static/js/index.js"></script>
+</body>
+
+</html>

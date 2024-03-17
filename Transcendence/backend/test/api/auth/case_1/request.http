@@ -1,0 +1,10 @@
+POST http://localhost:8000/api/auth/sign-up HTTP/1.1
+content-type: application/json
+Authorization: Bearer 2427522bf1108865721ef14f098be3332cbc071cc4df2ca9f391cf6ae5b6ec8a
+
+{
+  "intraId": 102557,
+  "username": "emakas",
+  "email": "emakas@student.42istanbul.com.tr",
+  "avatarURI": "https://cdn.intra.42.fr/users/5ee05c7679ea721bc3c08c5b62c63001/emakas.jpg"
+}

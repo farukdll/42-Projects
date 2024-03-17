@@ -1,0 +1,122 @@
+<body class="profile-detail-body bg-dark slytherin-bg">
+	<title>Profile Detail</title>
+
+	<!-- MAIN START -->
+	<main>
+		<section class="container-fluid">
+			<div class="row d-flex">
+				<div class="col-lg-2 my-5"></div>
+
+				<div class="col-lg-10 col-12 d-flex justify-content-center">
+					<div class="card my-2 px-5 justify-content-center rgba-background-dark flexible-box">
+						<div class="container text-center">
+							<div class="row align-items-start">
+								<div class="col-3 text-white" style="flex-wrap: wrap; flex-direction: column;">
+									<h5 style="color: #02c302;">Match</h5>
+									<span id="total_match"></span>
+								</div>
+								<div class="col-3 text-white" style="flex-wrap: wrap; flex-direction: column;">
+									<h5 style="color: #02c302;">Tournament</h5>
+									<span id="total_tournament"></span>
+								</div>
+								<div class="col-3 text-white" style="flex-wrap: wrap; flex-direction: column;">
+									<h5 style="color: #02c302;">Enemy</h5>
+									<span id="enemy"></span>
+								</div>
+								<div class="col-3 friend-flex" style="flex-wrap: wrap;">
+									<button id="add-friend-button" class="btn btn-outline-success"
+										onclick="requestAddFriend()">
+										Add Friend
+										<div id="pedding-friend" class="spinner-border text-light" role="status" style="display: none;">
+											<span class="visually-hidden">Loading...</span>
+										</div>
+									</button>
+									<button id="delete-friend-button" class="btn btn-outline-danger"
+										style="display: none;" onclick="requestDeleteFriend()">Delete Friend</button>
+									<button id="friend-block-button" class="btn btn-outline-danger"
+										onclick="requestBlock()">Block</button>
+									<button id="friend-unblock-button" class="btn btn-outline-dark"
+										style="display: none;" onclick="requestUnBlock()">Block</button>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+
+				<!--Name and Surname-->
+				<div class="col-lg-2 row mt-5 d-flex justify-content-center">
+					<img id="profile-photo" class="rounded-circle mb-4 mb-lg-0"
+						src="https://cdn.intra.42.fr/users/1f81c1f14a4f11ed780ac68e6c3be982/btekinli.jpg"
+						style="width: 150px; height: 150px;">
+					<span class="d-flex justify-content-center mt-3">
+						<p id="nickname" style="color: white;" class="fs fs-3"></p>
+					</span>
+					<div class="card d-flex justify-content-center rgba-background-dark py-2" style="width: 78%;">
+						<div class="col col-12 d-flex justify-content-center">
+						</div>
+						<div class="d-flex justify-content-center row">
+							<h5 style="color: white; margin-left: 50%;">Name: <span id="pr-name"></span></h5>
+							<h5 style="color: white; margin-left: 27%;">Surname: <span id="pr-surname"></span></h5>
+						</div>
+					</div>
+					<div class="col col-12"></div>
+					<div class="col col-12"></div>
+					<div class="col col-12"></div>
+					<div class="col col-12"></div>
+					<div class="col col-12"></div>
+					<div class="col col-12"></div>
+				</div>
+				<!--Name and Surname Informationd End-->
+
+				<!--pie chart-->
+				<div class="col-lg-5 col-12 d-flex justify-content-center">
+					<div class="card justify-content-center rgba-background-dark"
+						style="width: 98%; height: 110%; margin-top: 30px;">
+						<div class="container text-center">
+							<div class="row align-items-start">
+
+								<div class="col-12 text-white d-flex justify-content-center">
+									<div class="pie-chart">
+										<h4>Match</h4>
+										<!-- Pasta Grafiği -->
+										<div id="chart" class="chart-container">
+										</div>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+
+				<div class="col-lg-5 mt-sm-5 mt-lg-0 d-flex justify-content-center">
+					<div class="card justify-content-center rgba-background-dark"
+						style="width: 98%; height: 110%; margin-top: 30px;">
+						<div class="container text-center">
+							<div class="row align-items-start">
+								<div class="container">
+									<div class="row">
+										<div class="col-12">
+											<div class="overflow-y-scroll" style="height: 300px">
+												<ul id="matchList" class="list-group">
+													<!-- Match List -->
+
+												</ul>
+											</div>
+											<div class="col-12 mt-5 overflow-y-scroll" style="height: 300px">
+												<ul id="tournamentList" class="list-group">
+													<!-- Tournament List -->
+
+												</ul>
+											</div>
+										</div>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+		</section>
+	</main>
+	<!-- MAIN END -->
+	<script src="/static/js/profile-detail.js"></script>
+</body>

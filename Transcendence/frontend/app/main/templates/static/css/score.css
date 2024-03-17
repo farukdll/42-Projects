@@ -1,0 +1,45 @@
+html,
+.score-body {
+    height: 100%;
+}
+
+.score-img {
+    width: 50px;
+    height: auto;
+    margin: 10px;
+
+    @media (min-width: 370px) {
+        width: 100px;
+    }
+
+    @media (min-width: 990px) {
+        width: 150px;
+    }
+
+    @media (min-width: 1200px) {
+        width: 200px;
+    }
+}
+
+.score-bg-page {
+    background: rgb(221, 221, 221);
+}
+
+.example::-webkit-scrollbar {
+    display: none;
+}
+
+.score-rush {
+    top: 5%;
+    right: 5%;
+}
+
+div.animate {
+    display: inline-flex;
+    position: relative;
+    transition: all 1s ease-out;
+}
+
+.bg-info-size {
+    height: 100px;
+}

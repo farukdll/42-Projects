@@ -1,0 +1,4 @@
+GET http://localhost:8000/api/interacts/friends/Amela HTTP/1.1
+content-type: application/json
+Authorization: Bearer 2427522bf1108865721ef14f098be3332cbc071cc4df2ca9f391cf6ae5b6ec8a
+

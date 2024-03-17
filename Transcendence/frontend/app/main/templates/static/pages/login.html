@@ -1,0 +1,133 @@
+<body class="bg-dark">
+	<title>Login</title>
+
+	<section>
+		<title id="head-title">Login</title>
+
+		<img src="/static/assets/login-rush-42.png" alt="Welcome" class="login-rush_logo_size">
+		
+		<div class="card bg-dark-subtle login-card-position rounded-5 login-card-size mt-5">
+			<div class="card-body d-flex flex-column align-items-center">
+				<h5 class="login-head_size my-3">Login<br>
+					<span class="d-flex flex-column align-items-center mt-1">With</span>
+				</h5>
+				<a
+					href="https://api.intra.42.fr/oauth/authorize?client_id=u-s4t2ud-93b994991128a715506042b0c6a8460084a51ee7cbd47b81b9acf5c385edb53c&redirect_uri=http%3A%2F%2Flocalhost%2Flogin&response_type=code" class="mt-3">
+					<img src="/static/assets/42-button.png" class="login-button-42 img-fluid rounded-4">
+				</a>
+			</div>
+
+			<!-- Button trigger modal -->
+			<div class="d-grid gap-2 col-6 mx-auto mb-3" style="width: 45%;">
+				<button type="button" class="btn btn-secondary mb-1 btn-sm" data-bs-toggle="modal"
+					data-bs-target="#signInModal">
+					Sign In
+				</button>
+
+				<button type="button" class="btn btn-light btn-sm" data-bs-toggle="modal"
+					data-bs-target="#registerModal">
+					Register
+				</button>
+			</div>
+		</div>
+
+		<!-- Register -->
+		<div class="modal fade bg-dark" id="registerModal" tabindex="-1" aria-labelledby="exampleModalLabel"
+			aria-hidden="true">
+			<div class="modal-dialog modal-dialog-centered">
+				<div class="modal-content">
+					<div class="modal-header">
+						<h1 class="modal-title fs-5 text-dark" id="exampleModalLabel">Register</h1>
+						<button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+					</div>
+					<div class="modal-body">
+
+						<form id="form-register">
+							<div>
+								<label for="register-nickname" class="col-form-label text-dark"
+									minlength="9">Username:</label>
+								<input type="text" class="form-control" id="register-nickname">
+								<div class="password-hint">
+									Username should be at least 8 characters long.
+								</div>
+							</div>
+							<div>
+								<label for="register-name" class="col-form-label text-dark">Name:</label>
+								<input type="text" class="form-control" id="register-name">
+							</div>
+							<div>
+								<label for="register-surname" class="col-form-label text-dark">Surname:</label>
+								<input type="text" class="form-control" id="register-surname">
+							</div>
+							<div>
+								<label for="register-password" class="col-form-label text-dark"
+									autocomplete="new-password">Password:</label>
+								<input id="register-password" oninput="control_password(id)" type="password"
+									class="form-control" minlength="6">
+							</div>
+							<div id="input-password" class="password-hint login-hide">
+								Password should be at least 6 characters long.
+								<br />
+							</div>
+							<div>
+								<label for="register-password-too" class="col-form-label text-dark"
+									autocomplete="new-password">Password Again?</label>
+								<input id="register-password-too" oninput="control_password(id)" type="password"
+									class="form-control" minlength="6">
+							</div>
+							<div id="input-password-too" class="password-hint login-hide">
+								Password should be at same!
+								<br />
+							</div>
+							<div>
+								<label for="register-email" class="col-form-label text-dark">Email:</label>
+								<input type="text" class="form-control" id="register-email">
+							</div>
+						</form>
+
+					</div>
+					<div class="modal-footer">
+						<button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+						<button id="register-submit" form="form-register" type="submit" class="btn btn-light register-turn">Register</button>
+					</div>
+
+				</div>
+			</div>
+		</div>
+
+		<!--Sign In-->
+		<div class="modal fade bg-dark" id="signInModal" tabindex="-1" aria-labelledby="exampleModalLabel"
+			aria-hidden="true">
+			<div class="modal-dialog modal-dialog-centered">
+				<div class="modal-content">
+					<div class="modal-header">
+						<h1 class="modal-title fs-5 text-dark" id="exampleModalLabel">Sign In</h1>
+						<button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+					</div>
+					<div class="modal-body">
+
+						<form id="form-sign-in">
+							<div>
+								<label for="sign-nickname" class="col-form-label text-dark">Username:</label>
+								<input type="text" class="form-control" id="sign-nickname">
+							</div>
+							<div>
+								<label for="sign-password" class="col-form-label text-dark"
+									autocomplete="on">Password:</label>
+								<input type="password" class="form-control" id="sign-password">
+							</div>
+						</form>
+
+					</div>
+					<div class="modal-footer">
+						<button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+						<button type="submit" form="form-sign-in" class="btn btn-light signIn">Sign In</button>
+					</div>
+				</div>
+			</div>
+		</div>
+		<!--js değişecek register and sign-->
+		<script src="/static/js/login.js"></script>
+	</section>
+
+</body>

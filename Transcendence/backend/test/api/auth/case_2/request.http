@@ -1,0 +1,4 @@
+POST http://localhost:8000/api/auth/sign-in/42 HTTP/1.1
+content-type: application/json
+
+{"code": "136c0ac9fb4dd1f4c336b3d20eadef4d4dd0dfc20585cb1a2fd152fe973a052b"}

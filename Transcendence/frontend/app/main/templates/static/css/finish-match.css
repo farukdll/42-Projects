@@ -1,0 +1,67 @@
+.black-ground-color-two {
+	background: linear-gradient(to top left, rgb(44, 11, 14) 45%, rgb(3, 22, 51) 0%) bottom left/470% 6400%;
+}
+
+.text-winner-head-render {
+	color: rebeccapurple;
+}
+
+.winner-profile-render {
+	position: absolute;
+	border-radius: 20%;
+	width: 30%;
+	height: 40%;
+	transform: translate(0, 20%);
+}
+
+.king-photo-render {
+	transform: translate(-30%, -39%);
+	width: 40%;
+	height: 60%;
+}
+
+.text-loser-head-render {
+	color: red;
+	font-size: 177%
+}
+
+.loser-profile-render {
+	position: absolute;
+	border-radius: 100%;
+	width: 15%;
+	height: 25%;
+	transform: translate(0%, 100%);
+}
+
+.flower-photo-render {
+	position: absolute;
+	width: 38%;
+	height: 40%;
+	transform: translate(20%, 120%);
+
+}
+
+.rip-photo-render {
+	position: absolute;
+	width: 45%;
+	height: 65%;
+	transform: translate(0%, 23%);
+}
+
+@media (max-width: 768px) {
+
+	.winner-profile-render,
+	.king-photo-render,
+	.loser-profile-render,
+	.flower-photo-render,
+	.rip-photo-render {
+		width: 100%;
+		height: auto;
+		transform: translate(0, 0);
+	}
+
+	.text-winner-head-render,
+	.text-loser-head-render {
+		font-size: 5vw;
+	}
+}

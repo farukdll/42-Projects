@@ -1,0 +1,56 @@
+.login-head_size {
+	font-size: 50px;
+	margin: 0px;
+}
+
+.login-button-42 {
+	width: 200px;
+	height: 100px;
+}
+
+.login-rush_logo_size {
+	position: absolute;
+	top: 50%;
+	left: 50%;
+	transform: translate(-50%, -100%);
+	width: 450px;
+	height: 450px;
+}
+
+.login-card-size {
+	width: 450px;
+	height: 450px;
+	background-color: red;
+}
+
+.login-card-position {
+	border: 5px solid;
+	position: absolute;
+	top: 50%;
+	left: 50%;
+	transform: translate(-50%, -40%);
+	padding: 10px;
+}
+
+.login-modal-backdrop {
+	z-index: -1;
+}
+
+.password-input {
+	margin-bottom: 10px;
+}
+
+.password-hint {
+	font-size: 12px;
+	color: #6c757d;
+}
+
+.login-hide
+{
+	display: none;
+}
+
+.register-turn
+{
+	pointer-events: none;
+}

@@ -1,0 +1,73 @@
+#left-photo,
+#right-photo {
+    max-width: 600px;
+    max-height: auto;
+}
+
+.match-font-size {
+    font-size: 140%;
+}
+
+.match-img-circle {
+    width: 100%;
+    height: 10%;
+    border-radius: 100%;
+}
+
+.match-button {
+    width: 100%;
+    height: 75px;
+    margin-top: 10%;
+    margin-bottom: 10%;
+
+    @media (max-width: 600px) {
+        width: 100%;
+        height: 45px;
+        margin-top: 10%;
+        margin-bottom: 10%;
+    }
+}
+
+.match-spinner-response {
+    @media (max-width: 600px) {
+        width: 50px;
+        height: 50px;
+    }
+
+    @media (min-width: 700px) {
+        width: 100px;
+        height: 100px;
+    }
+
+    @media (min-width: 900px) {
+        width: 150px;
+        height: 150px;
+    }
+
+    @media (min-width: 1200px) {
+        width: 200px;
+        height: 200px;
+    }
+
+}
+
+.match-photo-size {
+    width: 200px;
+    height: 200px;
+}
+
+.match-text-size {
+    font-size: 50%;
+
+    @media (min-width: 400px) {
+        font-size: 80%;
+    }
+
+    @media (min-width: 600px) {
+        font-size: 120%;
+    }
+}
+
+.match-tennis-show {
+    display: none;
+}

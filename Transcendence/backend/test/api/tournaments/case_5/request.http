@@ -1,0 +1,4 @@
+POST http://localhost:8000/api/interacts/blacklist/Alfreda/add HTTP/1.1
+content-type: application/json
+
+{"username":  "Kuame"}

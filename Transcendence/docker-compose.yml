@@ -1,0 +1,82 @@
+version: '3.2'
+
+networks :
+  my_network:
+    driver: bridge
+
+volumes:
+  backend:
+    driver: local
+    name: volume_backend
+  db:
+
+services:
+  gateway:
+    image: nginx
+    container_name: gateway
+    volumes:
+      - ./.conf/nginx/conf:/etc/nginx/conf.d:ro
+    ports:
+      - "80:80"
+      - "443:443"
+    networks:
+      - my_network
+    depends_on:
+      #- db
+      - backend
+      - frontend
+      - websocket
+      #- adminer
+  #db:
+  #  image: postgres
+  #  environment:
+  #    POSTGRES_PASSWORD: r00T1453!
+  #    PGDATA: /var/lib/postgresql/data/db-files/
+  #  volumes:
+  #    - db:/var/lib/postgresql/data/db-files/
+  #  networks:
+  #    - my_network
+  #adminer:
+  #  image: adminer
+  #  restart: always
+  #  ports:
+  #    - 8080:8080
+  #  networks:
+  #    - my_network
+  websocket:
+    env_file:
+    - ./.env
+    build:
+      context: ./websocket
+      dockerfile: Dockerfile
+    networks:
+      - my_network
+    expose:
+      - 8000
+  backend:
+    env_file:
+    - ./.env
+    build:
+      context: ./backend
+      dockerfile: Dockerfile
+    container_name: my_backend
+    restart: always
+    expose:
+      - 8000
+    volumes:
+      - backend:/app/media
+    networks:
+      - my_network
+    #depends_on:
+    #  - db
+  frontend:
+    build:
+      context: ./frontend
+      dockerfile: Dockerfile
+    container_name: my_frontend
+    expose:
+      - 8000
+    networks:
+      - my_network
+    ports:
+      - "8000:8000"

@@ -1,0 +1,26 @@
+@import url('/static/css/about.css');
+@import url('/static/css/ai.css');
+@import url('/static/css/error-404.css');
+@import url('/static/css/finish-match.css');
+@import url('/static/css/livechat.css');
+@import url('/static/css/login.css');
+@import url('/static/css/main.css');
+@import url('/static/css/match.css');
+@import url('/static/css/profile-detail.css');
+@import url('/static/css/pvp.css');
+@import url('/static/css/tournament.css');
+@import url('/static/css/score.css');
+
+@import url("https://fonts.googleapis.com/css2?family=Kode+Mono:wght@400..700&display=swap");
+
+:root {
+    --hue: 200;
+    --saturation: 70%;
+    --foreground-color: #e2e2e2;
+    --background-color: #222223;
+}
+
+body {
+    font-family: "Kode Mono", monospace;
+    font-style: normal;
+}
