@@ -1,13 +1,10 @@
-#include <errno.h>
-#include <netdb.h>
 #include <netinet/in.h>
-#include <sys/socket.h>
 #include <string.h>
 #include <stdlib.h>
-#include <stdio.h>
 #include <unistd.h>
+#include <stdio.h>
 
-typedef struct s_client{
+typedef struct s_client {
     int id;
     char msg[1024];
 } t_client;
